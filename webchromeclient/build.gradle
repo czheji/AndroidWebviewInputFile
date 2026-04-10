@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
+apply plugin: 'maven'
 
 android {
     compileSdkVersion 25
@@ -22,7 +22,7 @@ android {
     }
 }
 
-dependencies {
+project.dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -31,17 +31,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
 }
-
-publishing {
-    publications {
-        release(MavenPublication) {
-            groupId = 'com.github.czheji'
-            artifactId = 'AndroidWebviewInputFile'
-            version = '1.0.0'
-
-            afterEvaluate {
-                from components.release
-            }
-        }
-    }
-}
+group = 'com.github.czheji'
+version = '1.0.0'
+archivesBaseName = 'AndroidWebviewInputFile'
