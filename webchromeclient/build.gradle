@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 25
@@ -29,4 +30,18 @@ dependencies {
     compile 'com.zhy:okhttputils:2.6.2'
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.czheji'
+            artifactId = 'AndroidWebviewInputFile'
+            version = '1.0.0'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
 }
