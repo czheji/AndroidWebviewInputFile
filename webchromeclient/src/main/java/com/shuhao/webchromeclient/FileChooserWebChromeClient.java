@@ -32,7 +32,6 @@ public class FileChooserWebChromeClient extends WebChromeClient {
     public interface ActivityCallBack{
         void FileChooserBack(Intent intent);
     }
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
         build.uploadMessage.setUploadMessageAboveL(filePathCallback);
@@ -46,6 +45,7 @@ public class FileChooserWebChromeClient extends WebChromeClient {
     }
 
     // For Android  >= 3.0
+    @SuppressWarnings("unchecked")
     public void openFileChooser(ValueCallback valueCallback, String acceptType) {
         build.uploadMessage.setUploadMessage(valueCallback);
         build.callBack.FileChooserBack(build.uploadMessage.openImageChooserActivity(acceptType));
